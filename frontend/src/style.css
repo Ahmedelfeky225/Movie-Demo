@@ -154,3 +154,32 @@ box-shadow: none !important;
 .d--none{
     display: none !important;
 }
+
+@media (max-width:767px){
+    .w-smm-100{
+        width: 100% !important;
+    }
+    .w-smm-75{
+        width: 75% !important;
+    }
+    .w-smm-95{
+        width: 90% !important;
+    }
+}
+@media (max-width:991px){
+    .w-mdd-100{
+        width: 100% !important;
+    }
+    .w-mdd-75{
+        width: 75% !important;
+    }
+}
+
+@media (min-width:992px){
+    .w-xll-50{
+        width: 50% !important;
+    }
+    .w-xll-100{
+        width: 100% !important;
+    }
+}

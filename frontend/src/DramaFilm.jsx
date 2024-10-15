@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import { Link } from 'react-router-dom';
 export function DramaFilm() {
   const [movies, setMovies] = useState([]);
 
@@ -19,12 +19,14 @@ export function DramaFilm() {
       <div className="row"> {/* شبكة الأفلام */}
         {dramaMovies.slice(0,4).map((movie) => (
           <div className="col-6 col-sm-4 col-lg-3" key={movie._id}> {/* كل عمود يحتوي على بوستر فيلم */}
+            <Link to={`/movies/${movie._id}`} style={{ textDecoration: 'none' }}> 
             <div className="card mb-4" style={{ boxSizing: "border-box", borderRadius: "0px" }}>
               <img src={movie["poster_photo"]} className="card-img-top" alt={movie.title} style={{ width: "100%", height: "200px" }} />
               <div className="card-body p-0 pt-2">
                 <h5 className="card-title" style={{ fontSize: "13px", color: "rgb(76, 15, 189)" }}>{movie.title}</h5>
               </div>
             </div>
+            </Link>
           </div>
         ))}
       </div>

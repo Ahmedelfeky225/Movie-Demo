@@ -7,7 +7,7 @@ router
   .get(MoviesController.getAllMovies) // GET all movies
   .post(MoviesController.createMovie); // POST a movie
 
-  router
+router
   .route("/categories/")
   .get(MoviesController.getAllCategory) // for categories
 
@@ -15,19 +15,19 @@ router
   .route("/:id")
   .get(MoviesController.getMovieByID) // GET a movie by ID
 
-  router
+router
   .route("/category/:categoryId") // GET a category by category
   .get(MoviesController.getMoviesByCategoryID) // GET a movies by category
 
-  router
+router
   .route("/rating/desc")
   .get(MoviesController.getMoviesByRatingDesc) // GET a Highest rating desc
 
-  router
+router
   .route("/mostliked/desc")
   .get(MoviesController.getMoviesByLikedDesc) // GET a Most Liked desc
 
-  router
+router
   .route("/recentlyadded/desc")
   .get(MoviesController.getRecentlyAddedDesc) // GET a recently added movie desc
 
@@ -36,7 +36,7 @@ router
   .get(MoviesController.getMostViewedDesc) // GET a Most viewed movie desc
 
 
-  router
+router
   .route('/search/movie')
   .get(MoviesController.searchMoviesByTitle);
 
