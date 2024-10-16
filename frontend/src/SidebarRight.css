@@ -76,7 +76,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #4c0fbd;
+  color: #510fbd;
   font-weight: bold;
   text-decoration: none;
 }
@@ -87,4 +87,14 @@
 
 .connect-sidebar .nav-link i {
   margin-right: 10px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  transform: translateX(-7px) !important;
+  box-shadow: 8px 8px 15px #6c6970;
+  color: white; 
+  margin: 15px 10px !important;
+  padding: 10px 5px !important;
+
 }

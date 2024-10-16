@@ -3,19 +3,21 @@ import  {DramaFilm} from './DramaFilm';
 import  {ActionFilm} from './ActionFilm';
 import { AnimeFilm } from "./AnimeFilm"
 import {AdventureFilm} from "./AdventureFilm"
-import {ComedyFilm} from "./ComdeyFilm"
-import {HistoricalFilm} from "./HistoricalFilm"
+import {ComdeyFilm} from "./ComdeyFilm"
+// import {HistoricalFilm} from "./HistoricalFilm"
+import { ThrillerFilm } from './ThrillerFilm';
 export function CardsFilm() {
 
   return (
     <>
-    <DramaFilm/>
+    <ActionFilm />
+    <DramaFilm />
     <AnimeFilm/>
-    <ActionFilm/>
-    <AdventureFilm/>
+    <ComdeyFilm/>
     <RomanceFilm/>
-    <ComedyFilm/>
-    <HistoricalFilm/>
+    <AdventureFilm/>
+    <ThrillerFilm/>
+    {/* <HistoricalFilm/> */}
     </>
   );
 }

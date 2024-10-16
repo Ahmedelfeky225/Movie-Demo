@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-export function DramaFilm({limit=4,page=1}) {
+export function ThrillerFilm({limit=4,page=1}) {
+
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/movies/category/670874d44d96e86e905c2e8c?page=${page}&limit=${limit}`)
+    fetch(`http://localhost:8080/movies/category/6708757f4d96e86e905c2e94?page=${page}&limit=${limit}`)
       .then(response => response.json())
       .then(data => setMovies(data.movies))
       .catch(error => console.error('Error fetching movies:', error));
@@ -14,7 +15,7 @@ export function DramaFilm({limit=4,page=1}) {
 
   return (
     <div className="container-fluid mt-4 box-shadoww rounded-1" style={{ backgroundColor: "#fff" }}> {/* تعيين خلفية بيضاء */}
-      <h6 className="text-start fw-bold mb-0" style={{padding:"12px 0 12px 4px",color:"rgb(76, 15, 189"}}>Drama Movies</h6> {/* عنوان القسم */}
+      <h6 className="text-start fw-bold mb-0" style={{padding:"12px 0 12px 4px",color:"rgb(76, 15, 189"}}>Thriller Movies</h6> {/* عنوان القسم */}
       <div className="row"> {/* شبكة الأفلام */}
       {movies.map((movie) => (
         <div className="col-6 col-sm-4 col-lg-3" key={movie._id}> {/* كل عمود يحتوي على بوستر فيلم */}

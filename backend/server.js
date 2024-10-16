@@ -8,9 +8,9 @@ const app = express();
 const Movies = require("./Domain/Movies/Models/MoviesModel");
 
 // mongodb+srv://a01152379344:1241999a_H@cluster0.mpg9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-// app.use(cors({
-//   origin: ['http://localhost:3000', 'http://another-domain.com']
-// }));
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://another-domain.com']
+}));
 app.use(express.json());
 
 // app.use(cors({
@@ -19,17 +19,6 @@ app.use(express.json());
 
 const PORT = 8080;
 
-app.use((req, res, next) => {
-  console.log("MiddelWare 1");
-
-  console.log("Method:", req.method, "URL:", req.url);
-  next();
-});
-
-app.use((req, res, next) => {
-  console.log("MiddelWare 2");
-  next();
-});
 
 app.use(morgan("dev"));
 
@@ -41,8 +30,19 @@ app.use("/movies", Domain.routes.MoviesRouter);
 app.get('/allMovies', (req, res) => {
   Movies.find().then(result => res.send(result)).catch(err => console.log(err))
 })
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+});
 
+// Optional: 404 handler
+app.use((req, res) => {
+  res.status(404).send('Sorry, page not found!');
+});
 
+// app.get('/allMovies', (req, res) => {
+//   Movies.find().then(result => res.send(result)).catch(err => console.log(err))
+// })
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);

@@ -19,23 +19,16 @@ const Category = require("../Models/CategoryModel");
 
 //// for validation 'express-validator'
 
-// const validationId = [
-//     check("id").notEmpty()
-//     .isLength({ min: 24, max: 24 })
-//     .withMessage(
-//       "ID: input must be a 24 character hex string, 12 byte Uint8Array, or an integer"
-//     ),
-// ];
+const validationId = [
+  check("id")
+    .notEmpty()
+    .isLength({ min: 24, max: 24 })
+    .withMessage(
+      "ID: input must be a 24 character hex string, 12 byte Uint8Array, or an integer"
+    ),
+];
 /////////////////////////////////////
 
-// Get All Movie
-// const getAllMovies = async (req, res) => {
-// const page = parseInt(req.query.page) || 1; // Default to page 1
-// const limit = parseInt(req.query.limit) || 10; // Default to 10 movies per page
-
-// const skip = (page - 1) * limit; // Calculate how many movies to skip
-// const getAllMovi = await Movies.find();
-// res.json(getAllMovi);
 const getAllMovies = async (req, res) => {
   // Get page and limit from query parameters, with defaults
   const page = parseInt(req.query.page) || 1; // Default to page 1
@@ -61,11 +54,22 @@ const getAllMovies = async (req, res) => {
 // Get Movie By ID
 const getMovieByID = async (req, res) => {
   const { id } = req.params;
-  const getAllMoviID = await Movies.findById(id);
-  if (getAllMoviID) {
-    res.json(getAllMoviID);
-  } else {
-    res.status(500).json({ message: "Movie Not Found", error });
+
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array()[0].msg });
+  }
+  try {
+    const getAllMoviID = await Movies.findById(id);
+    if (getAllMoviID) {
+      res.json(getAllMoviID);
+    } else {
+      res
+        .status(404)
+        .json({ message: `No movie found for this Id : (${id}).` });
+    }
+  } catch (error) {
+    return res.status(404).json({ error: error.message });
   }
 };
 
@@ -117,13 +121,16 @@ const createMovie = async (req, res) => {
 };
 
 const getMoviesByCategoryID = async (req, res) => {
-  const { categoryId } = req.params;
+  const { id } = req.params;
   const { page = 1, limit = 10 } = req.query; // Set default values for page and limit
-
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).json({ errors: errors.array()[0].msg });
+  }
   try {
     // Make sure to convert categoryId to ObjectId if necessary
-    const totalMovies = await Movies.find({ categories: categoryId });
-    const movies = await Movies.find({ categories: categoryId }) // Fetch movies with pagination
+    const totalMovies = await Movies.find({ categories: id });
+    const movies = await Movies.find({ categories: id }) // Fetch movies with pagination
       .limit(parseInt(limit)) // Limit number of results
       .skip((page - 1) * limit); // Skip results for pagenation
 
@@ -135,10 +142,12 @@ const getMoviesByCategoryID = async (req, res) => {
         movies,
       });
     } else {
-      res.status(404).json({ message: "No movies found for this category." });
+      res
+        .status(404)
+        .json({ message: `No movies found for this category Id : (${id}).` });
     }
   } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
+    res.status(500).json({ error: error.message });
   }
 };
 
@@ -277,13 +286,20 @@ const searchMoviesByTitle = async (req, res) => {
     const movies = await Movies.find({
       title: { $regex: title, $options: "i" },
     }); // Case insensitive search
-    res.status(200).json(movies);
+    if (movies.length > 0) {
+      return res.status(200).json(movies);
+    } else {
+      return res
+        .status(404)
+        .json({ message: "No movies found for this title." });
+    }
   } catch (error) {
     res.status(500).json({ message: "Error fetching movies", error });
   }
 };
 
 module.exports = {
+  validationId,
   getAllMovies,
   createMovie,
   getMovieByID,
