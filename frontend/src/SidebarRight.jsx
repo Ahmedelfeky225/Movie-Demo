@@ -59,7 +59,11 @@ export function SidebarRight() {
         // style={{ color: "#4c0fbd" }}
         activeClassName="active" // سيتم تطبيق هذا الـ CSS عند النقر
       >
+<<<<<<< HEAD
         <span className="mx-2">Filmac</span>
+=======
+        <span className="mx-2">Filmac Home</span>
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382
         <img src="/film-clapperboard (1).png" style={{ width: "20px" }} alt="" />
       </NavLink>
     </li>

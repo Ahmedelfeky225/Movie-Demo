@@ -41,10 +41,13 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+<<<<<<< HEAD
   },
   "devDependencies": {
     "file-loader": "^6.2.0",
     "postcss": "^8.4.47",
     "postcss-loader": "^8.1.1"
+=======
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382
   }
 }

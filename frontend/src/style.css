@@ -152,9 +152,12 @@ box-shadow: none !important;
     .colm-reverse{
         flex-direction: column-reverse !important;
     }
+<<<<<<< HEAD
     .text-s-91{
         text-align: start !important;
     }
+=======
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382
 }
 
 
@@ -189,6 +192,7 @@ box-shadow: none !important;
     .w-xll-100{
         width: 100% !important;
     }
+<<<<<<< HEAD
 }
 
 .form-control{
@@ -215,3 +219,6 @@ box-shadow: none !important;
     }
    
 } */
+=======
+}
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382

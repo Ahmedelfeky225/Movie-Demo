@@ -18,6 +18,10 @@ const moviesSchema = new Schema({
   photo: { type: String, required: true },
   trailer: { type: String, required: true },
   link: { type: String, required: true },
+<<<<<<< HEAD
+=======
+  Original_link: { type: String, required: true },
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382
 });
 
 const Movies = mongoose.model("Movies", moviesSchema);

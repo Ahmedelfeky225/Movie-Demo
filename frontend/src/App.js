@@ -14,8 +14,11 @@ import RomancePage from "./Pages/RomancePage";
 import AdventurePage from "./Pages/AdventurePage.jsx";
 import ThrillerPage from "./Pages/ThrillerPage.jsx";
 
+<<<<<<< HEAD
 import { MovieSearchForm } from "./CardFilmSearch.jsx"
 
+=======
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382
 function App() {
   const [movies, setMovies] = useState([]);
 
@@ -58,7 +61,10 @@ function App() {
                 <Route path="/adventure" element={<AdventurePage />} />
                 <Route path="/thriller" element={<ThrillerPage />} />
                 <Route path="/movies/:id" element={<MovieDetailsPage />} />
+<<<<<<< HEAD
                 <Route path="/movie/search/" element={<MovieSearchForm />} />
+=======
+>>>>>>> 2102966eb7478d8c5548581d89f6fa65bfe99382
               </Routes>
               <div className="d-none d-lg-block">
                 <Footer />
