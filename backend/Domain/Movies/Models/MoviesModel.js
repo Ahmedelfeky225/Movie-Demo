@@ -18,7 +18,6 @@ const moviesSchema = new Schema({
   photo: { type: String, required: true },
   trailer: { type: String, required: true },
   link: { type: String, required: true },
-  Original_link: { type: String, required: true },
 });
 
 const Movies = mongoose.model("Movies", moviesSchema);

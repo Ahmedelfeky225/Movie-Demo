@@ -9,6 +9,7 @@ import {
   FaThumbsUp,
   FaFilm,
 } from "react-icons/fa"; // استيراد أيقونات من مكتبة Font Awesome
+import { GrOverview } from "react-icons/gr";
 
 export function MovieDataDetails() {
   const { id } = useParams(); // استخدم useParams لاستخراج الـ id من الـ URL
@@ -36,59 +37,69 @@ export function MovieDataDetails() {
         <div>
           <div className="w-smm-100 d-lg-flex flex-lg-row d-flex flex-column-reverse justify-content-lg-between ">
             <div className="w-xll-50 w-smm-100">
-              <h5 className="mt-4" style={{ color: "rgb(76, 15, 189)" }}>
-                ({movie.title})
+              <h5 className="mt-4" style={{ color: "rgb(76, 15, 10)" }}>
+                ( {movie.title} )
               </h5>
               <p
                 className="text-start px-4 mt-4 d-flex align-items-center"
                 style={{ color: "rgb(76, 15, 189)" }}
               >
-                <FaStar className="me-2" />{" "}
-                <span style={{ fontWeight: "900" }}>
-                  Rating: {movie.rating}
+                <span>
+                  <strong>Rating:</strong> {movie.rating}
                 </span>
+                <FaStar className="ms-2" style={{ color: "yellow" }} />{" "}
               </p>
               <p
                 className="text-start px-4 d-flex align-items-center"
                 style={{ color: "rgb(76, 15, 189)" }}
               >
-                <FaEye className="me-2" /> Views:{" "}
-                <span style={{ fontWeight: "900" }}>{movie.views}</span>
+                <strong>Views: </strong>
+                <span style={{ marginLeft: "5px" }}>{movie.views}</span>
+                <FaEye className="ms-2" style={{ color: "#aaaaaa" }} />
               </p>
               <p
                 className="text-start px-4 d-flex align-items-center"
                 style={{ color: "rgb(76, 15, 189)" }}
               >
-                <FaCalendarAlt className="me-2" /> Release Date:{" "}
-                <span style={{ fontWeight: "900" }}>
+                <strong>Release Date: </strong>
+                <span style={{ marginLeft: "3px" }}>
+                  {" "}
                   {new Date(movie.release_date).toLocaleDateString()}
                 </span>
+                <FaCalendarAlt className="ms-2" style={{ color: "#000" }} />
               </p>
               <ul
                 className="d-flex align-items-center px-4 list-unstyled "
                 style={{ gap: "8px", color: "rgb(76, 15, 189)" }}
               >
-                Type:{" "}
+                <strong>Type: </strong>[
                 {movie.genres.map((tp, index) => (
-                  <li key={index} style={{ fontWeight: "900" }}>
+                  <li key={index}>
                     {tp}
+                    {movie.genres.length === index + 1 ? "" : ","}
                   </li>
                 ))}
+                ]
               </ul>
               <p
                 className="text-start px-4 d-flex align-items-center"
                 style={{ color: "rgb(76, 15, 189)" }}
               >
-                <FaThumbsUp className="me-2" /> Vote Count:{" "}
-                <span style={{ fontWeight: "900" }}>{movie.vote_count}</span>
+                <strong> Vote Count: </strong>
+                <span style={{ marginLeft: "5px" }}>{movie.vote_count}</span>
+                <FaThumbsUp className="ms-2" />
               </p>
               <p
                 className="text-start px-4 d-flex align-items-center"
                 style={{ color: "rgb(76, 15, 189)" }}
               >
                 <FaFilm />{" "}
-                <span style={{ fontWeight: "900", fontSize: "13px" }}>
-                  <span className="fw-light fs-6">Overview:</span>{" "}
+                <span>
+                  <span>
+                    <strong>
+                      Overview <GrOverview style={{ color: "#666" }} /> :{" "}
+                    </strong>
+                  </span>{" "}
                   {movie.overview}
                 </span>
               </p>
@@ -110,12 +121,33 @@ export function MovieDataDetails() {
         className="rounded-1 py-3 mt-3"
         style={{ background: "#e5e5e5", color: "rgb(76, 15, 189)" }}
       >
-        <span>Click here to watch the full movie!: </span>
-        <a href={movie["link"]}>
-          <button type="button" className="btn btn-primary mt-sm-0 mt-3">
-            Watch Now
-          </button>
-        </a>
+        <div className="mb-2">
+          <span>
+            Click here to watch the full movie on{" "}
+            <strong>Official website! </strong>:{" "}
+          </span>
+          <a href={movie["Original_link"]}>
+            <button
+              type="button"
+              className="btn btn-sm btn-primary mt-sm-0 mt-3"
+            >
+              Watch Now
+            </button>
+          </a>
+        </div>
+        <div>
+          <span>
+            Click here to watch the full movie on <strong>Egybest! </strong>:{" "}
+          </span>
+          <a href={movie["link"]}>
+            <button
+              type="button"
+              className="btn btn-sm  btn-secondary mt-sm-0 mt-3"
+            >
+              Watch Now
+            </button>
+          </a>
+        </div>
       </div>
     </div>
   );

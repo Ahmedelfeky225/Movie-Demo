@@ -91,10 +91,9 @@
 
 .nav-link.active {
   font-weight: bold;
-  transform: translateX(-7px) !important;
-  box-shadow: 8px 8px 15px #6c6970;
-  color: white; 
-  margin: 15px 10px !important;
-  padding: 10px 5px !important;
-
+  /* transform: translateX(-7px) !important; */
+  box-shadow: 1px 1px 7px #6c696ebf;
+  color: white;
+  margin: 5px 0px !important;
+  padding: 10px 7px !important;
 }

@@ -152,6 +152,9 @@ box-shadow: none !important;
     .colm-reverse{
         flex-direction: column-reverse !important;
     }
+    .text-s-91{
+        text-align: start !important;
+    }
 }
 
 
@@ -187,3 +190,28 @@ box-shadow: none !important;
         width: 100% !important;
     }
 }
+
+.form-control{
+    border-right: 0 !important;
+    border-radius: 3px !important;
+    padding: 8px 10px !important;
+}
+.input-placeholder-white::placeholder {
+    color: #fff !important; /* لون placeholder الأبيض */
+    opacity: 0.3 !important; /* للتأكد من وضوح اللون */
+  }
+
+.input-placeholder-white{
+    color: #fff !important;
+}
+
+.form-control:focus{
+    box-shadow: 0px 0px 5px #ffffff63 !important;
+}
+
+/* .bg-sm{
+    @media (max-width:767px) {
+        background-color: rgb(44 0 125) !important;
+    }
+   
+} */
