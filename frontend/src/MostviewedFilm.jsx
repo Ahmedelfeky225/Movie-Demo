@@ -20,7 +20,7 @@ export function MostviewedFilm({limit=4,page=1}) {
       {movies.map((movie) => (
         <div className="col-6 col-sm-4 col-lg-3" key={movie._id}> {/* كل عمود يحتوي على بوستر فيلم */}
             <Link to={`/movies/${movie._id}`} style={{ textDecoration: 'none' }}> 
-            <div className="card mb-4" style={{ boxSizing: "border-box", borderRadius: "0px" ,position:"relative",display:"flex",alignItems:"center"}}>
+            <div className="card mb-4" style={{ boxSizing: "border-box", borderRadius: "10px" ,position:"relative",display:"flex",alignItems:"center"}}>
             <div className="position-absolute top-0 start-0 p-2" style={{ backgroundColor: "rgba(0,0,0,0.6)", color: "#fff", fontSize: "12px",borderRadius:"25px" }}>
               {<strong>{movie.views}</strong>}<IoEyeSharp style={{color:"yellow",width:"20px",height:"15px"}}/>
             </div>
