@@ -89,6 +89,7 @@ const createMovie = async (req, res) => {
       trailer,
       photo,
       link,
+      Original_link
     } = req.body;
 
     const categoryIds = await Promise.all(
@@ -111,6 +112,7 @@ const createMovie = async (req, res) => {
       trailer,
       photo,
       link,
+      Original_link
     });
 
     await movie.save();

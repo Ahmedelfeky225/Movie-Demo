@@ -7,7 +7,6 @@ const cors = require('cors');
 const app = express();
 const Movies = require("./Domain/Movies/Models/MoviesModel");
 
-// mongodb+srv://a01152379344:1241999a_H@cluster0.mpg9b.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 app.use(cors({
   origin: ['http://localhost:3000', 'http://another-domain.com']
 }));
@@ -27,22 +26,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/movies", Domain.routes.MoviesRouter);
 
-app.get('/allMovies', (req, res) => {
-  Movies.find().then(result => res.send(result)).catch(err => console.log(err))
-})
+
+// General error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send('Something went wrong!');
 });
 
-// Optional: 404 handler
+// 404 handler for unmatched routes
 app.use((req, res) => {
   res.status(404).send('Sorry, page not found!');
 });
 
-// app.get('/allMovies', (req, res) => {
-//   Movies.find().then(result => res.send(result)).catch(err => console.log(err))
-// })
 
 app.listen(PORT, () => {
   console.log(`http://localhost:${PORT}`);
