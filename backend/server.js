@@ -5,7 +5,6 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const cors = require('cors');
 const app = express();
-const Movies = require("./Domain/Movies/Models/MoviesModel");
 
 app.use(cors({
   origin: ['http://localhost:3000', 'http://another-domain.com']

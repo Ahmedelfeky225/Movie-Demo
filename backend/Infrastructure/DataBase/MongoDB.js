@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-// mongodb+srv://user:1241999a_H@cluster5.murj6.mongodb.net/
-// mongodb+srv://user:1241999a_H@cluster5.murj6.mongodb.net/
 function connect() {
   mongoose
     .connect(
